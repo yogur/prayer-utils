@@ -1,5 +1,6 @@
 plugins {
     id 'java-library'
+    id 'maven-publish'
     id 'org.jreleaser' version '1.19.0'
 }
 
@@ -34,6 +35,46 @@ java {
     withSourcesJar()
 }
 
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId = 'io.github.yogur'
+            artifactId = 'prayer-utils'
+            
+            from components.java
+
+            pom {
+                name = 'prayer-utils'
+                description = 'High-precision Java library for calculating Islamic prayer times.'
+                url = 'https://github.com/yogur/prayer-utils'
+                licenses {
+                    license {
+                        name = 'Unlicense'
+                        url = 'https://unlicense.org/'
+                    }
+                }
+                developers {
+                    developer {
+                        id = 'yogur'
+                        name = 'Abdul Rahman Al-Kibbe'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git@github.com:yogur/prayer-utils.git'
+                    developerConnection = 'scm:git:git@github.com:yogur/prayer-utils.git'
+                    url = 'https://github.com/yogur/prayer-utils'
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            url = layout.buildDirectory.dir('staging-deploy')
+        }
+    }
+}
+
 jreleaser {
     project {
         name = 'prayer-utils'
@@ -64,7 +105,7 @@ jreleaser {
                 sonatype {
                     active = 'ALWAYS'
                     url = 'https://central.sonatype.com/api/v1/publisher'
-                    stagingRepository('build/jreleaser/staging')
+                    stagingRepository('build/staging-deploy')
                 }
             }
         }

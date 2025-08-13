@@ -1,5 +1,8 @@
 # Prayer Utils
 
+[![Maven](https://img.shields.io/maven-central/v/io.github.yogur/prayer-utils?color=dodgerblue)](https://central.sonatype.com/artifact/io.github.yogur/prayer-utils/)
+[![javadoc](https://javadoc.io/badge2/io.github.yogur/prayer-utils/javadoc.svg)](https://javadoc.io/doc/io.github.yogur/prayer-utils)
+
 High-precision Java library for calculating Islamic prayer times.
 
 This library computes Fajr, Sunrise, Dhuhr, Asr, Maghrib, and Ishaa using the NREL Solar Position Algorithm (SPA) under the hood for accurate astronomical results. It supports configurable angles for Fajr/Ishaa, both Shafi'i and Hanafi Asr methods, and a safe fallback for extreme latitudes (Aqrab al-Bilad) where conventional calculations are not possible.
