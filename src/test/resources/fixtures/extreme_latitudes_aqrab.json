@@ -1,0 +1,26 @@
+{
+  "description": "High/Extreme latitude cases requiring Aqrab al-Bilad fallback",
+  "cases": [
+    {
+      "input": {
+        "date": "2025-06-01",
+        "latitude": 52.5200,
+        "longitude": 13.4050,
+        "elevation": 49,
+        "timezone": "Europe/Berlin",
+        "fajrAngle": 18.0,
+        "ishaaAngle": 12.0,
+        "asrMethod": "SHAFII",
+        "useAqrabAlBilad": true
+      },
+      "expected": {
+        "fajr": "01:04",
+        "sunrise": "04:49",
+        "dhuhr": "13:05",
+        "asr": "17:26",
+        "maghrib": "21:19",
+        "ishaa": "23:21"
+      }
+    }
+  ]
+}

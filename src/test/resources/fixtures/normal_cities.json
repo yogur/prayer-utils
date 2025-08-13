@@ -1,0 +1,47 @@
+{
+  "description": "Representative cities with normal twilight behavior",
+  "cases": [
+    {
+      "input": {
+        "date": "2025-08-01",
+        "latitude": 52.5200,
+        "longitude": 13.4050,
+        "elevation": 49,
+        "timezone": "Europe/Berlin",
+        "fajrAngle": 18.0,
+        "ishaaAngle": 12.0,
+        "asrMethod": "SHAFII",
+        "useAqrabAlBilad": true
+      },
+      "expected": {
+        "fajr": "02:19",
+        "sunrise": "05:26",
+        "dhuhr": "13:13",
+        "asr": "17:23",
+        "maghrib": "20:58",
+        "ishaa": "22:36"
+      }
+    },
+    {
+      "input": {
+        "date": "2025-08-08",
+        "latitude": 33.8938,
+        "longitude": 35.5018,
+        "elevation": 0,
+        "timezone": "Asia/Beirut",
+        "fajrAngle": 18.0,
+        "ishaaAngle": 18.0,
+        "asrMethod": "SHAFII",
+        "useAqrabAlBilad": false
+      },
+      "expected": {
+        "fajr": "04:21",
+        "sunrise": "05:54",
+        "dhuhr": "12:44",
+        "asr": "16:26",
+        "maghrib": "19:32",
+        "ishaa": "21:04"
+      }
+    }
+  ]
+}

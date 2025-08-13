@@ -1,0 +1,72 @@
+plugins {
+    id 'java-library'
+    id 'org.jreleaser' version '1.19.0'
+}
+
+group = 'io.github.yogur'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "net.e175.klaus:solarpositioning:2.0.6"
+
+    testImplementation libs.junit.jupiter
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.19.2'
+    testImplementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.19.2'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+jreleaser {
+    project {
+        name = 'prayer-utils'
+        description = 'High-precision Java library for calculating Islamic prayer times.'
+        website = 'https://github.com/yogur/prayer-utils'
+        authors = ['Abdul Rahman Al-Kibbe']
+        license = 'Unlicense'
+        links {
+            homepage = 'https://github.com/yogur/prayer-utils'
+            documentation = 'https://github.com/yogur/prayer-utils#readme'
+            license = 'https://unlicense.org/'
+        }
+    }
+    release {
+        github {
+            repoOwner = 'yogur'
+            name = 'prayer-utils'
+            overwrite = true
+        }
+    }
+    signing {
+        active = 'ALWAYS'
+        armored = true
+    }
+    deploy {
+        maven {
+            mavenCentral {
+                sonatype {
+                    active = 'ALWAYS'
+                    url = 'https://central.sonatype.com/api/v1/publisher'
+                    stagingRepository('build/jreleaser/staging')
+                }
+            }
+        }
+    }
+}
